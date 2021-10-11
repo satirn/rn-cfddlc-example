@@ -5408,6 +5408,16 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-cfd@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-cfd/-/react-native-cfd-0.0.9.tgz#5152dc2f62a6c65b5a5d0c33a7ce8ce4113e2ce9"
+  integrity sha512-auxR4L0U/R2Jdm2EylNlvUCrOszsttuXXNQTkJl8Pp1FBA/C+9YIuubnbV9KPA5PRtmHN+Twg18YjsWt1bGGFQ==
+
+react-native-cfddlc@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/react-native-cfddlc/-/react-native-cfddlc-0.0.16.tgz#16305f98a784e86b43830d7da7af52ef5cd125cf"
+  integrity sha512-/WRXewkR7R8cQ7dH8b739Te/BYAf4OhhLP7fCjxuby5/vI6KByYIZ7kTb32EUMvR7FIHxqe3UJsEewO3yAh0QA==
+
 react-native-codegen@^0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.7.tgz#86651c5c5fec67a8077ef7f4e36f7ed459043e14"
