@@ -22,7 +22,14 @@ import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
 
 import * as cfdjs from 'react-native-cfd';
 import * as cfddlcjs from 'react-native-cfddlc';
-import {CreateCetAdaptorSignatures} from 'react-native-cfddlc';
+
+function MessagesToMessagesList(input: string[][]): cfddlcjs.Messages[] {
+  return input.map(x => {
+    return {
+      messages: x,
+    };
+  });
+}
 
 async function CreateKeyPair() {
   const reqJson = {
@@ -37,14 +44,6 @@ async function CreateKeyPair() {
   return response;
 }
 
-function MessagesToMessagesList(input: string[][]): cfddlcjs.Messages[] {
-  return input.map(x => {
-    return {
-      messages: x,
-    };
-  });
-}
-
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
   const [result, setResult] = React.useState<string | undefined>();
@@ -54,12 +53,16 @@ const App = () => {
   };
 
   const onCreate = async () => {
+    let messages = [
+      ['1', '0'],
+      ['0', '1'],
+    ];
+    let messagesList = MessagesToMessagesList(messages);
+    console.log(messagesList);
+
     let cetSignRequest = {
-      messages: [
-        ['1', '0'],
-        ['0', '1'],
-      ],
-      cets: [
+      messagesList: messagesList,
+      cetsHex: [
         '0200000001caf898f4f82e91cc4769bd2e421e2ba257db446f734d29911c57ed579306c6d60000000000ffffffff01d007000000000000160014921aff64e57d014455144949be573ccf9e2ab0ab00000000',
         '0200000001caf898f4f82e91cc4769bd2e421e2ba257db446f734d29911c57ed579306c6d60000000000ffffffff01d0070000000000001600144da2ed8775deb1b68323f07ed9e7fd716be11aa600000000',
       ],
@@ -80,7 +83,9 @@ const App = () => {
     console.log('cetsignreq: ', JSON.stringify(cetSignRequest));
 
     try {
-      let cetSignatures = await CreateCetAdaptorSignatures(cetSignRequest);
+      let cetSignatures = await cfddlcjs.CreateCetAdaptorSignatures(
+        cetSignRequest,
+      );
       console.log('cetsigs: ', cetSignatures);
       setResult(JSON.stringify(cetSignatures));
     } catch (error) {
